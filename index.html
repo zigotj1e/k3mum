@@ -490,7 +490,36 @@
   margin-bottom: 0.5rem;
   object-fit: contain;
 }
+
+.order-button {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 12px 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #28a745, #218838);
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.order-button:hover {
+  background: linear-gradient(135deg, #f1a90e, #f1a90e);
+  box-shadow: 0 6px 14px rgb(5, 2, 0);
+  transform: translateX(-50%) scale(1.05);
+}
+
   </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 <body>
   <header>
@@ -604,6 +633,7 @@
         <h3 id="cat-chicken-title">Ayam Kampung Pedaging</h3>
         <p>Ayam kampung sehat, daging lezat, sumber protein alami untuk keluarga Anda.</p>
         <a href="https://wa.me/6281342676342?text=Halo%2C+saya+ingin+memesan+Ayam+Kampung+Pedaging" class="order-button">Pesan Sekarang</a>
+
       </div>
     </div>
 
@@ -613,7 +643,8 @@
       <div class="category-content">
         <h3 id="cat-feed-title">Pakan Ternak</h3>
         <p>Pakan bergizi yang mendukung pertumbuhan dan kesehatan unggas ternak Anda.</p>
-        <a href="https://wa.me/6281342676342?text=Halo%2C+saya+ingin+memesan+Pakan+Ternak" class="order-button">Pesan Sekarang</a>
+        <a href="https://wa.me/6281342676342?text=Halo%2C+saya+ingin+memesan+Ayam+Kampung+Pedaging" class="order-button">Pesan Sekarang</a>
+
       </div>
     </div>
 
@@ -623,9 +654,8 @@
       <div class="category-content">
         <h3 id="cat-equipment-title">Perlengkapan Peternakan</h3>
         <p>Alat dan perlengkapan peternakan modern untuk memudahkan usaha Anda.</p>
-        <a href="https://wa.me/6281342676342?text=Halo%2C+saya+ingin+memesan+Perlengkapan+Peternakan" class="order-button">Pesan Sekarang</a>
-      </div>
-    </div>
+        <a href="https://wa.me/6281342676342?text=Halo%2C+saya+ingin+memesan+Ayam+Kampung+Pedaging" class="order-button">Pesan Sekarang</a>
+   </div>
 
   </div>
 </section>
@@ -637,8 +667,8 @@
       <p>Menjadi pelopor usaha peternakan ayam kampung pedaging terbaik yang mendukung peternak lokal dan memenuhi kebutuhan konsumen secara profesional.</p>
       <h3>Misi</h3>
       <p>Menyediakan produk unggas berkualitas, pakan ternak bergizi, dan perlengkapan lengkap dengan pelayanan terbaik serta inovasi layanan online yang mudah digunakan.</p>
-      <h3>Profil Usaha</h3>
-      <p>K3 MITRA UNGGAS MAKASSAR
+      <!-- <h3>Profil Usaha</h3>
+      <p>K3 MITRA UNGGAS MAKASSAR -->
 
 <!-- Info Kontak Usaha -->
 <section class="container contact-section" id="contact">
@@ -649,39 +679,48 @@
   <p><strong>Telepon:</strong> <a href="tel:+6281342676342">+62 81342676342</a></p>
   <p><strong>Email:</strong> <a href="hudamahdy12@gmail.com">hudamahdy12@gmail.com</a></p>
 
-  <p><strong>Sosial Media:</strong></p>
-  <ul class="sosmed-list">
-    <li><a href="https://wa.me/6281342676342" target="_blank" rel="noopener">WhatsApp</a></li>
-    <li><a href="https://www.instagram.com/KasimLow" target="_blank" rel="noopener">Instagram</a></li>
-    <li><a href="https://www.facebook.com/oddo.ces" target="_blank" rel="noopener">Facebook</a></li>
-    <li><a href="https://www.tiktok.com/@k3mum" target="_blank" rel="noopener">TikTok</a></li>
-  </ul>
+  <!-- <p><strong>Sosial Media:</strong></p>
+<ul class="sosmed-list">
+  <li><a href="https://wa.me/6281342676342" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i>
+  </a></li>
+  <li><a href="https://www.instagram.com/KasimLow" target="_blank" rel="noopener">
+    <i class="fab fa-instagram"></i>
+  </a></li>
+  <li><a href="https://www.facebook.com/oddo.ces" target="_blank" rel="noopener">
+    <i class="fab fa-facebook"></i>
+  </a></li>
+  <li><a href="https://www.tiktok.com/@k3mum" target="_blank" rel="noopener">
+    <i class="fab fa-tiktok"></i>
+  </a></li>
+</ul> -->
+
 </section>
 
 <!-- Tambahkan CSS berikut di dalam <style> atau file CSS terpisah -->
 <style>
   .sosmed-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  list-style: none;
+  padding: 10px 0 0; /* Atas 10px untuk dekat dengan judul */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
 
-  .sosmed-list li {
-    display: inline;
-  }
+.sosmed-list li a {
+  text-decoration: none;
+  color: #28a745; /* Warna hijau */
+  font-size: 2.5rem;
+  transition: transform 0.3s, color 0.3s;
+}
 
-  .sosmed-list a {
-    text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
-  }
+.sosmed-list li a:hover {
+  transform: scale(1.2);
+  color: #1e7e34; /* Hijau tua saat hover */
+}
 
-  .sosmed-list a:hover {
-    text-decoration: underline;
-  }
+
 </style>
 
     </section>
@@ -705,20 +744,34 @@
       </div>
     </section>
 
+
+    
+
   <!-- Contact Section -->
 <section class="container contact-section" id="contact" aria-label="Kontak K3 Mitra Unggas Makassar">
   <h2 class="section-title">Kontak Kami</h2>
+  <ul class="sosmed-list">
+    <li><a href="https://wa.me/6281342676342" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i>
+    </a></li>
+    <li><a href="https://www.instagram.com/KasimLow" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>
+    </a></li>
+    <li><a href="https://www.facebook.com/oddo.ces" target="_blank" rel="noopener">
+      <i class="fab fa-facebook"></i>
+    </a></li>
+    <li><a href="https://www.tiktok.com/@k3mum" target="_blank" rel="noopener">
+      <i class="fab fa-tiktok"></i>
+    </a></li>
+  </ul>
+</section>
 
-  <div class="contact-info">
-    <p><strong>Telepon:</strong> <a href="tel:+6281342676342">+62 81342676342</a></p>
-    <p><strong>WhatsApp:</strong> <a href="https://wa.me/6281342676342" target="_blank" rel="noopener">Chat via WhatsApp</a></p>
-    <p><strong>Email:</strong> <a href="hudamahdy12@gmail.com">hudamahdy12@gmail.com</a></p>
-    <p><strong>Alamat:</strong> Jl. KOMP KODAM KATANGKA BLOK G 13, Makassar, Sulawesi Selatan</p>
-  </div>
+
+  
 
 
-      
-    </section>
+
+</section>
   </main>
 
   <script>
