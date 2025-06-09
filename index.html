@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>K3 Mitra Unggas Makassar (K3MUM)</title>
+  <style>
+    :root {
+      --green-nature: #127410;
+      --green-light: #62a950;
+      --orange-energy: #18d0d6;
+      --orange-light: #f7091d;
+      --bg-light: #f9fafb;
+      --text-dark: #1e293b;
+      --text-light: #ffffff;
+      --shadow: rgba(0,0,0,0.15);
+      --transition-speed: 0.3s;
+      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-family);
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color var(--transition-speed);
+    }
+    a:hover,
+    a:focus {
+      color: var(--orange-energy);
+    }
+
+    /* Navbar */
+    header {
+      background-color: var(--green-nature);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0.5rem 1rem;
+      color: var(--text-light);
+    }
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      user-select: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      font-weight: 600;
+      padding: 0.5rem 0.25rem;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2.5px;
+      background-color: var(--orange-energy);
+      bottom: 0;
+      left: 0;
+      transition: width var(--transition-speed);
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus::after {
+      width: 100%;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: var(--text-light);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* Mobile nav open */
+    nav.open .nav-links {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 1rem;
+      background-color: var(--green-nature);
+      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 4px 12px var(--shadow);
+      z-index: 999;
+      width: 180px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(90deg, var(--green-nature), var(--orange-energy));
+      color: var(--text-light);
+      padding: 3rem 1rem 5rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+    }
+    .hero button {
+      background-color: var(--orange-energy);
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      color: var(--text-light);
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(251,146,60,0.6);
+      transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    .hero button:hover,
+    .hero button:focus {
+      background-color: var(--orange-light);
+      box-shadow: 0 6px 14px rgba(251,146,60,0.9);
+      outline: none;
+    }
+
+    /* Container for inner sections */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 1rem;
+    }
+
+    /* Section Headings */
+    h2.section-title {
+      text-align: center;
+      font-size: 2rem;
+      color: var(--green-nature);
+      margin-bottom: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* Advantages */
+    .advantages {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .advantage-card {
+      background-color: var(--text-light);
+      box-shadow: 0 4px 12px var(--shadow);
+      border-radius: 12px;
+      padding: 1.5rem;
+      flex: 1 1 280px;
+      max-width: 300px;
+      text-align: center;
+      transition: transform var(--transition-speed);
+      cursor: default;
+      user-select: none;
+    }
+    .advantage-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px var(--shadow);
+    }
+    .advantage-card h3 {
+      color: var(--orange-energy);
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .advantage-card p {
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background-color: var(--green-light);
+      color: var(--text-light);
+      border-radius: 12px;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+    .testimonial {
+      margin-bottom: 1.5rem;
+    }
+    .testimonial:last-child {
+      margin-bottom: 0;
+    }
+    .testimonial p {
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.4;
+    }
+    .testimonial cite {
+      display: block;
+      text-align: right;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+
+    /* Products */
+    .product-categories {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .category-card {
+      background-color: var(--text-light);
+      box-shadow: 0 4px 15px var(--shadow);
+      border-radius: 15px;
+      max-width: 320px;
+      flex: 1 1 280px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-speed);
+      cursor: pointer;
+    }
+    .category-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px var(--shadow);
+    }
+    .category-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 3px solid var(--orange-energy);
+      transition: transform var(--transition-speed);
+    }
+    .category-card:hover img {
+      transform: scale(1.1);
+    }
+    .category-content {
+      padding: 1rem 1.5rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .category-content h3 {
+      color: var(--green-nature);
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .category-content p {
+      font-size: 0.95rem;
+      color: #555;
+      flex-grow: 1;
+    }
+    .category-content button {
+      margin-top: 1rem;
+      background-color: var(--orange-energy);
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: background-color var(--transition-speed);
+      align-self: flex-start;
+      box-shadow: 0 3px 8px rgba(251,146,60,0.6);
+    }
+    .category-content button:hover,
+    .category-content button:focus {
+      background-color: var(--orange-light);
+      outline: none;
+      box-shadow: 0 5px 15px rgba(251,146,60,0.9);
+    }
+
+    /* About Us */
+    .about-us {
+      background-color: var(--text-light);
+      border-radius: 12px;
+      padding: 2rem 2rem;
+      box-shadow: 0 4px 15px var(--shadow);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-us h3 {
+      color: var(--green-nature);
+      margin-top: 0;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+    .about-us p {
+      font-size: 1rem;
+      margin-bottom: 1.25rem;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    /* Blog/Education */
+    .blog-posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .blog-post {
+      background-color: var(--text-light);
+      box-shadow: 0 4px 15px var(--shadow);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      transition: transform var(--transition-speed);
+      cursor: default;
+    }
+    .blog-post:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 28px var(--shadow);
+    }
+    .blog-post h4 {
+      margin-top: 0;
+      color: var(--green-nature);
+      font-weight: 700;
+    }
+    .blog-post p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.4;
+      margin-bottom: 0;
+    }
+
+    /* Contact */
+    .contact-section {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    form {
+      background-color: var(--text-light);
+      padding: 1.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px var(--shadow);
+      margin-bottom: 2rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      color: var(--green-nature);
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 0.6rem 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid var(--green-light);
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      transition: border-color var(--transition-speed);
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      border-color: var(--orange-energy);
+      outline: none;
+      box-shadow: 0 0 6px var(--orange-energy);
+    }
+    button[type="submit"] {
+      background-color: var(--orange-energy);
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 700;
+      color: var(--text-light);
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(251,146,60,0.7);
+      transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+    }
+    button[type="submit"]:hover,
+    button[type="submit"]:focus {
+      background-color: var(--orange-light);
+      outline: none;
+      box-shadow: 0 6px 18px rgba(251,146,60,0.9);
+    }
+
+    /* Social media icons */
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .social-icons a {
+      color: var(--green-nature);
+      font-size: 1.5rem;
+      transition: color var(--transition-speed);
+    }
+    .social-icons a:hover {
+      color: var(--orange-energy);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .advantages {
+        justify-content: center;
+      }
+    }
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+      }
+      .advantages {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .category-card {
+        max-width: 100%;
+      }
+    }
+
+    .advantage-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #f8f8f8;
+  transition: transform 0.3s ease;
+}
+
+.advantage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.advantage-card h3 {
+  margin-bottom: 1rem;
+  color: #2c8a4a;
+}
+
+.advantage-card img {
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <nav id="navbar">
+      <div class="brand" tabindex="0">K3MUM</div>
+      <div class="nav-links" id="nav-links">
+        <a href="#home">Beranda</a>
+        <a href="#products">Produk</a>
+        <a href="#about">Tentang Kami</a>
+        <a href="#blog">Blog & Edukasi</a>
+        <a href="#contact">Kontak</a>
+      </div>
+      <div class="hamburger" id="hamburger" aria-label="Toggle Navigation Menu" aria-expanded="false" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section 
+  class="hero" 
+  id="home" 
+  role="region" 
+  aria-label="Beranda f3 Mitra Unggas Makassar"
+  style="
+    background-image: url('img/ayam\ 3.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    padding: 60px 20px; 
+    color: rgb(255, 217, 0); 
+    text-align: center;
+  "
+>
+  <div style="margin-top: -85px;">  <!-- Atur nilai negatif sesuai kebutuhan -->
+  <h1 style="font-size: 70px;">K3 MITRA UNGGAS MAKASSAR</h1>
+  <p style="position: relative; top:-50px; color: rgb(255, 253, 253);">
+  Usaha peternakan ayam kampung pedaging terpercaya menyediakan produk unggulan untuk peternak dan konsumen.</p>
+
+  
+  <div style="margin-bottom: 10px;">  <!-- Tambahkan div wrapper dengan margin-bottom -->
+  <button 
+      onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" 
+      aria-label="Hubungi Kami Sekarang"
+      style="
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: rgb(252, 249, 249);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;">
+      Hubungi Kami
+  </button>
+</div>
+  
+  
+
+</section>
+<section class="container" aria-label="Keunggulan K3MUM">
+      <h2 class="section-title">Keunggulan Kami</h2>
+      <div class="advantages" role="list">
+       <article class="advantage-card" role="listitem" tabindex="0">
+  <h3>Kualitas Terbaik</h3>
+  <img src="img/logo ayam copy.png" 
+       alt="Ayam kampung segar berkualitas" 
+       width="150" height="150" loading="lazy">
+</article>
+
+<article class="advantage-card" role="listitem" tabindex="0">
+  <h3>Penjualan Lengkap</h3>
+  <img src="img/logo ayam copy.png" 
+       alt="Pakan dan perlengkapan ternak lengkap" 
+       width="150" height="150" loading="lazy">
+</article>
+
+<article class="advantage-card" role="listitem" tabindex="0">
+  <h3>Pemesanan Online</h3>
+  <img src="img/logo ayam copy.png" 
+       alt="Pemesanan online mudah" 
+       width="150" height="150" loading="lazy">
+</article>
+    </div>
+    </section>
+
+    <section class="testimonials" aria-label="Testimoni Pelanggan" style="background-color: #7a3f08; padding: 2rem;">
+  <h2 class="section-title" style="color: var(--text-light); text-transform: none;">APA KATA MEREKA</h2>
+  <blockquote class="testimonial">
+    <p>"Kualitas ayam kampung dari K3MUM selalu terbaik, pelayanan cepat dan ramah."</p>
+    <cite>- Bapak Hadi, Peternak Makassar</cite>
+  </blockquote>
+  <blockquote class="testimonial">
+    <p>"Pakan dan perlengkapan lengkap, harga bersahabat, sangat membantu usaha saya."</p>
+    <cite>- Ibu Sari, Peternak Profesional</cite>
+  </blockquote>
+</section>
+
+
+    <!-- Products Section -->
+<section class="container" id="products" aria-label="Produk K3MUM">
+  <h2 class="section-title">Produk Kami</h2>
+  <div class="product-categories">
+    
+    <!-- Ayam Kampung Pedaging -->
+    <div class="category-card" tabindex="0" aria-labelledby="cat-chicken-title">
+      <img src="img/ayam 1.png" alt="Ayam kampung pedaging berkualitas" loading="lazy" style="width: 100%; height: auto;">
+      <div class="category-content">
+        <h3 id="cat-chicken-title">Ayam Kampung Pedaging</h3>
+        <p>Ayam kampung sehat, daging lezat, sumber protein alami untuk keluarga Anda.</p>
+        <a href="https://wa.me/6281342676342?text=Halo%2C+saya+ingin+memesan+Ayam+Kampung+Pedaging" class="order-button">Pesan Sekarang</a>
+      </div>
+    </div>
+
+    <!-- Pakan Ternak -->
+    <div class="category-card" tabindex="0" aria-labelledby="cat-feed-title">
+      <img src="img/ayam 2.png" alt="Ayam kampung pedaging berkualitas" loading="lazy" style="width: 100%; height: auto;">
+      <div class="category-content">
+        <h3 id="cat-feed-title">Pakan Ternak</h3>
+        <p>Pakan bergizi yang mendukung pertumbuhan dan kesehatan unggas ternak Anda.</p>
+        <a href="https://wa.me/6281342676342?text=Halo%2C+saya+ingin+memesan+Pakan+Ternak" class="order-button">Pesan Sekarang</a>
+      </div>
+    </div>
+
+    <!-- Perlengkapan Peternakan -->
+    <div class="category-card" tabindex="0" aria-labelledby="cat-equipment-title">
+      <img src="img/ayam 4.jpeg" alt="Ayam kampung pedaging berkualitas" loading="lazy" style="width: 100%; height: auto;">
+      <div class="category-content">
+        <h3 id="cat-equipment-title">Perlengkapan Peternakan</h3>
+        <p>Alat dan perlengkapan peternakan modern untuk memudahkan usaha Anda.</p>
+        <a href="https://wa.me/6281342676342?text=Halo%2C+saya+ingin+memesan+Perlengkapan+Peternakan" class="order-button">Pesan Sekarang</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+    <!-- About Us Section -->
+    <section class="container about-us" id="about" aria-label="Tentang K3 Mitra Unggas Makassar">
+      <h2 class="section-title">Tentang Kami</h2>
+      <h3>Visi</h3>
+      <p>Menjadi pelopor usaha peternakan ayam kampung pedaging terbaik yang mendukung peternak lokal dan memenuhi kebutuhan konsumen secara profesional.</p>
+      <h3>Misi</h3>
+      <p>Menyediakan produk unggas berkualitas, pakan ternak bergizi, dan perlengkapan lengkap dengan pelayanan terbaik serta inovasi layanan online yang mudah digunakan.</p>
+      <h3>Profil Usaha</h3>
+      <p>K3 MITRA UNGGAS MAKASSAR
+
+<!-- Info Kontak Usaha -->
+<section class="container contact-section" id="contact">
+  <h2 class="section-title">K3 Mitra Unggas Makassar</h2>
+
+  <p><strong>Bidang Usaha:</strong> Peternakan Ayam Kampung Pedaging, Pakan Ternak, dan Peralatan Peternakan</p>
+  <p><strong>Alamat:</strong> Jl. KOMP KODAM KATANGKA BLOK G 13, Desa/Kel. Minasa Upa, Kec. Rappocini, Kota Makassar, Sulawesi Selatan</p>
+  <p><strong>Telepon:</strong> <a href="tel:+6281342676342">+62 81342676342</a></p>
+  <p><strong>Email:</strong> <a href="hudamahdy12@gmail.com">hudamahdy12@gmail.com</a></p>
+
+  <p><strong>Sosial Media:</strong></p>
+  <ul class="sosmed-list">
+    <li><a href="https://wa.me/6281342676342" target="_blank" rel="noopener">WhatsApp</a></li>
+    <li><a href="https://www.instagram.com/KasimLow" target="_blank" rel="noopener">Instagram</a></li>
+    <li><a href="https://www.facebook.com/oddo.ces" target="_blank" rel="noopener">Facebook</a></li>
+    <li><a href="https://www.tiktok.com/@k3mum" target="_blank" rel="noopener">TikTok</a></li>
+  </ul>
+</section>
+
+<!-- Tambahkan CSS berikut di dalam <style> atau file CSS terpisah -->
+<style>
+  .sosmed-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .sosmed-list li {
+    display: inline;
+  }
+
+  .sosmed-list a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .sosmed-list a:hover {
+    text-decoration: underline;
+  }
+</style>
+
+    </section>
+
+    <!-- Blog/Education Section -->
+    <section class="container" id="blog" aria-label="Blog dan Edukasi">
+      <h2 class="section-title">Blog & Edukasi</h2>
+      <div class="blog-posts" role="list">
+        <article class="blog-post" role="listitem" tabindex="0">
+          <h4>Cara Merawat Ayam Kampung Agar Sehat</h4>
+          <p>Pelajari teknik perawatan ayam kampung yang baik mulai dari pemilihan pakan, lingkungan kandang, dan pencegahan penyakit.</p>
+        </article>
+        <article class="blog-post" role="listitem" tabindex="0">
+          <h4>Tips Memilih Pakan Ternak Berkualitas</h4>
+          <p>Kenali jenis pakan ternak yang sesuai dengan kebutuhan ayam kampung untuk mendukung pertumbuhan optimal.</p>
+        </article>
+        <article class="blog-post" role="listitem" tabindex="0">
+          <h4>Perlengkapan Peternakan yang Wajib Dimiliki</h4>
+          <p>Daftar alat penting yang perlu dimiliki agar usaha peternakan Anda berjalan lancar dan efisien.</p>
+        </article>
+      </div>
+    </section>
+
+  <!-- Contact Section -->
+<section class="container contact-section" id="contact" aria-label="Kontak K3 Mitra Unggas Makassar">
+  <h2 class="section-title">Kontak Kami</h2>
+
+  <div class="contact-info">
+    <p><strong>Telepon:</strong> <a href="tel:+6281342676342">+62 81342676342</a></p>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/6281342676342" target="_blank" rel="noopener">Chat via WhatsApp</a></p>
+    <p><strong>Email:</strong> <a href="hudamahdy12@gmail.com">hudamahdy12@gmail.com</a></p>
+    <p><strong>Alamat:</strong> Jl. KOMP KODAM KATANGKA BLOK G 13, Makassar, Sulawesi Selatan</p>
+  </div>
+
+
+      
+    </section>
+  </main>
+
+  <script>
+    // Hamburger toggle for mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('navbar');
+    const navLinks = document.getElementById('nav-links');
+
+    function toggleMenu() {
+      nav.classList.toggle('open');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', !expanded);
+    }
+
+    hamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+
+    // Close mobile menu on link click (optional)
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if(nav.classList.contains('open')) {
+          toggleMenu();
+        }
+      });
+    });
+
+    // Contact form submit handling (simple alert for demo)
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const name = contactForm.name.value.trim();
+      const email = contactForm.email.value.trim();
+      const message = contactForm.message.value.trim();
+      if(name && email && message){
+        alert(`Terima kasih, ${name}! Pesan Anda telah kami terima.`);
+        contactForm.reset();
+      } else {
+        alert('Mohon lengkapi semua field!');
+      }
+    });
+  </script>
+</body>
+</html>
+
